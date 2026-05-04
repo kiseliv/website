@@ -1,0 +1,832 @@
+<!-- services.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Workshop & Branding | Frontmax - Premium Safety Equipment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1b4332; --primary-light: #2d6a4f; --primary-dark: #081c15;
+            --accent: #74c69d; --accent-light: #95d5b2; --accent-dark: #52b788; --accent-pale: #d8f3dc;
+            --text: #1b4332; --text-light: #52796f; --text-muted: #84a98c;
+            --bg: #ffffff; --bg-cream: #f8f9f8; --bg-pale: #eaf4ea;
+            --border: #d8f3dc; --border-light: #e8f5e9;
+            --shadow-sm: 0 1px 3px rgba(27,67,50,0.08);
+            --shadow-md: 0 4px 12px rgba(27,67,50,0.1);
+            --shadow-lg: 0 10px 40px rgba(27,67,50,0.12);
+            --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; background: var(--bg); overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-decoration: none; font-family: inherit; }
+        .btn-primary { background: var(--accent-dark); color: white; border-color: var(--accent-dark); }
+        .btn-primary:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+        .btn-white { background: white; color: var(--primary); border-color: white; }
+        .btn-white:hover { background: var(--bg-cream); }
+        .top-bar { background: var(--primary-dark); color: rgba(255,255,255,0.8); padding: 10px 0; font-size: 0.85rem; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-left { display: flex; gap: 24px; }
+        .top-left span { display: flex; align-items: center; gap: 8px; }
+        .top-left i { color: var(--accent-light); font-size: 0.85rem; }
+        .top-right { display: flex; gap: 14px; }
+        .top-right a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.85rem; }
+        .top-right a:hover { background: var(--accent); transform: translateY(-2px); }
+        .main-nav { background: white; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { height: 200px; width: auto; object-fit: contain; position: relative; z-index: 1001; }
+        .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+        .nav-links > li { position: relative; }
+        .nav-links > li > a { display: flex; align-items: center; gap: 6px; padding: 10px 16px; color: var(--text); font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--accent-dark); background: var(--accent-pale); }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu { position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition); list-style: none; border: 1px solid var(--border-light); }
+        .dropdown-menu li a { display: block; padding: 10px 16px; color: var(--text); font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .dropdown-menu li a:hover { background: var(--accent-pale); color: var(--primary); }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .search-box { position: relative; display: flex; align-items: center; }
+        .search-box input { width: 200px; padding: 10px 40px 10px 16px; border: 2px solid var(--border); border-radius: 30px; font-family: inherit; font-size: 0.9rem; transition: var(--transition); background: var(--bg-cream); }
+        .search-box input:focus { outline: none; border-color: var(--accent); width: 260px; background: white; }
+        .search-btn { position: absolute; right: 6px; background: var(--accent-dark); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: var(--primary); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .cart-icon:hover { background: var(--accent-pale); color: var(--primary); }
+        .cart-count { position: absolute; top: 2px; right: 2px; background: #e63946; color: white; font-size: 0.65rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .user-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--primary); cursor: pointer; transition: var(--transition); }
+        .user-icon:hover { background: var(--accent-pale); }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+        .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background: white; z-index: 2000; transition: var(--transition); overflow-y: auto; box-shadow: var(--shadow-lg); }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-header { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .close-mobile-menu { background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .mobile-nav-links { list-style: none; padding: 20px 0; }
+        .mobile-nav-links > li > a { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; color: var(--text); font-weight: 600; font-size: 1.1rem; border-bottom: 1px solid var(--border-light); text-decoration: none; }
+        .mobile-submenu { list-style: none; background: var(--bg-cream); display: none; }
+        .mobile-submenu.active { display: block; }
+        .mobile-submenu li a { display: block; padding: 12px 24px 12px 48px; color: var(--text-light); font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid var(--border-light); }
+        .mobile-contact { padding: 24px; background: var(--bg-cream); margin-top: 20px; }
+        .mobile-contact p { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text); font-weight: 500; }
+        .mobile-contact i { color: var(--accent-dark); width: 20px; }
+
+        /* Page Header */
+        .page-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); padding: 60px 0; position: relative; overflow: hidden; }
+        .page-header-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .page-header .container { position: relative; z-index: 2; }
+        .breadcrumb { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 20px; }
+        .breadcrumb a { color: rgba(255,255,255,0.9); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { color: var(--accent-light); }
+        .breadcrumb i { font-size: 0.7rem; }
+        .page-header h1 { font-size: 2.8rem; color: white; font-weight: 800; margin-bottom: 12px; }
+        .page-header p { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 600px; line-height: 1.7; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-tag { display: inline-block; color: var(--accent-dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 12px; color: var(--primary); }
+        .section-header p { color: var(--text-light); font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* GALLERY STYLES */
+        .gallery-section { padding: 50px 0; }
+        .gallery-section.alt { background: var(--bg-cream); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .gallery-item { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; cursor: pointer; transition: var(--transition); border: 1px solid var(--border); }
+        .gallery-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--accent-light); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(27,67,50,0.85), transparent); color: white; opacity: 0; transition: var(--transition); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+        .gallery-overlay span { font-size: 0.85rem; opacity: 0.9; }
+        .gallery-badge { position: absolute; top: 16px; left: 16px; background: var(--accent-dark); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+
+        /* Featured large image */
+        .gallery-featured { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .gallery-featured .gallery-item:first-child { aspect-ratio: 16/10; }
+        .gallery-featured .gallery-item:last-child { aspect-ratio: auto; }
+
+        /* Process Steps */
+        .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
+        .process-step-card { background: white; border-radius: var(--radius-md); padding: 20px; text-align: center; border: 1px solid var(--border); transition: var(--transition); }
+        .process-step-card:hover { border-color: var(--accent-dark); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .step-num { width: 44px; height: 44px; background: var(--accent-dark); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin: 0 auto 12px; }
+        .process-step-card h4 { color: var(--primary); font-size: 0.95rem; margin-bottom: 6px; }
+        .process-step-card p { color: var(--text-light); font-size: 0.85rem; line-height: 1.5; }
+
+        /* Store Section */
+        .store-section { padding: 50px 0; background: var(--bg-cream); }
+        .store-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .store-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .store-images .gallery-item { aspect-ratio: 1/1; }
+        .store-info h2 { font-size: 2rem; color: var(--primary); margin-bottom: 16px; }
+        .store-info p { color: var(--text-light); line-height: 1.7; margin-bottom: 20px; }
+        .store-details { display: flex; flex-direction: column; gap: 12px; }
+        .store-detail { display: flex; align-items: center; gap: 12px; color: var(--text); font-weight: 500; }
+        .store-detail i { color: var(--accent-dark); width: 20px; }
+
+        /* Lightbox */
+        .lightbox { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.92); z-index: 5000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: var(--transition); padding: 40px; }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: var(--radius-md); }
+        .lightbox-close { position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; color: white; font-size: 1.3rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+        .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+        .lightbox-caption { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: white; font-size: 1.1rem; font-weight: 600; text-align: center; background: rgba(0,0,0,0.5); padding: 10px 24px; border-radius: 30px; }
+
+        /* CTA */
+        .cta-section { padding: 50px 0; background: linear-gradient(135deg, var(--accent-dark) 0%, var(--primary-light) 100%); text-align: center; }
+        .cta-section h2 { font-size: 2rem; color: white; margin-bottom: 12px; }
+        .cta-section p { color: rgba(255,255,255,0.9); font-size: 1rem; max-width: 500px; margin: 0 auto 28px; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; }
+
+        /* Footer */
+        footer { background: var(--primary-dark); color: white; }
+        .footer-top { padding: 40px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
+        .footer-brand .logo { margin-bottom: 20px; }
+        .footer-brand > p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 24px; font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social a { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.95rem; }
+        .footer-social a:hover { background: var(--accent); transform: translateY(-3px); }
+        .footer-column h4 { font-size: 1.1rem; margin-bottom: 20px; color: white; position: relative; padding-bottom: 10px; }
+        .footer-column h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 3px; background: var(--accent); border-radius: 2px; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column ul li a { color: rgba(255,255,255,0.7); transition: var(--transition); font-size: 0.9rem; display: inline-block; text-decoration: none; }
+        .footer-column ul li a:hover { color: var(--accent-light); transform: translateX(4px); }
+        .footer-contact li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+        .footer-contact i { color: var(--accent); margin-top: 4px; font-size: 1rem; width: 20px; }
+        .footer-contact strong { color: white; display: block; margin-bottom: 2px; font-size: 0.9rem; }
+        .footer-contact p { color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.5; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
+        .footer-bottom-content { display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.85rem; transition: var(--transition); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-light); }
+
+        /* Cart */
+        .cart-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .cart-overlay.active { opacity: 1; visibility: visible; }
+        .cart-sidebar { position: fixed; top: 0; right: -450px; width: 450px; max-width: 100%; height: 100vh; background: white; z-index: 2000; transition: var(--transition); display: flex; flex-direction: column; box-shadow: var(--shadow-lg); }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .cart-header h3 { font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .close-cart { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-light); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .close-cart:hover { background: var(--bg-cream); color: #e63946; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
+        .cart-empty { text-align: center; padding: 40px 20px; }
+        .cart-empty i { font-size: 3rem; color: var(--border); margin-bottom: 16px; display: block; }
+        .cart-empty p { color: var(--text-light); margin-bottom: 20px; }
+        .cart-item { display: flex; gap: 12px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light); }
+        .cart-item-img { width: 60px; height: 60px; background: var(--bg-cream); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border); }
+        .cart-item-img i { font-size: 1.4rem; color: var(--accent-dark); opacity: 0.5; }
+        .cart-item-details { flex: 1; }
+        .cart-item-details h4 { font-size: 0.9rem; color: var(--primary); margin-bottom: 4px; }
+        .item-price { color: var(--accent-dark); font-weight: 700; font-size: 0.9rem; }
+        .quantity-control { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+        .qty-btn { width: 28px; height: 28px; border: 1px solid var(--border); background: white; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); font-weight: 600; font-size: 0.85rem; }
+        .remove-item { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.9rem; }
+        .remove-item:hover { color: #e63946; }
+        .cart-footer { padding: 20px; border-top: 1px solid var(--border); background: var(--bg-cream); }
+        .cart-total { display: flex; justify-content: space-between; margin: 12px 0 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 16px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 3000; transform: translateY(100px); opacity: 0; transition: var(--transition); display: flex; align-items: center; gap: 10px; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; border-radius: 50%; background: var(--accent-dark); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; z-index: 999; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+
+        /* WhatsApp */
+        .whatsapp-float { position: fixed; bottom: 90px; right: 24px; z-index: 9999; }
+        .whatsapp-btn { width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.6rem; cursor: pointer; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); border: none; text-decoration: none; }
+        .whatsapp-btn:hover { transform: scale(1.1); }
+
+        @media (max-width: 992px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-featured { grid-template-columns: 1fr; }
+            .gallery-featured .gallery-item:first-child { aspect-ratio: 4/3; }
+            .process-steps { grid-template-columns: repeat(2, 1fr); }
+            .store-grid { grid-template-columns: 1fr; }
+            .search-box { display: none; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 2rem; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-phone-alt"></i> +254 706 303 581</span>
+                <span><i class="fas fa-envelope"></i> info@frontmax.com</span>
+                <span><i class="fas fa-clock"></i> Mon-Fri 8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="top-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo (1).png" alt="Frontmax">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="shop.html#head">Head Protection</a></li>
+                        <li><a href="shop.html#eye">Eye & Face</a></li>
+                        <li><a href="shop.html#hand">Hand Protection</a></li>
+                        <li><a href="shop.html#foot">Foot Protection</a></li>
+                        <li><a href="shop.html#body">Body Protection</a></li>
+                        <li><a href="shop.html#respiratory">Respiratory</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html" class="active">Workshop</a></li>
+                <li><a href="about.html">company</a></li>
+                <li><a href="blog.html"></a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." id="searchInput">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="user-icon"><i class="fas fa-user"></i></div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">
+                <img src="./images/logo (1).png" alt="Frontmax" style="height: 180px; width: auto; object-fit: contain;">
+            </a>
+            <button class="close-mobile-menu" id="closeMobileMenu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-submenu">
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="shop.html#head">Head Protection</a></li>
+                    <li><a href="shop.html#eye">Eye & Face</a></li>
+                    <li><a href="shop.html#hand">Hand Protection</a></li>
+                    <li><a href="shop.html#foot">Foot Protection</a></li>
+                </ul>
+            </li>
+            <li><a href="services.html" class="active">Workshop</a></li>
+            <li><a href="about.html">company</a></li>
+            <li><a href="blog.html"></a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-contact">
+            <p><i class="fas fa-phone-alt"></i> +254 706 303 581</p>
+            <p><i class="fas fa-envelope"></i> info@frontmax.com</p>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg"></div>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Our Workshop</span>
+            </div>
+            <h1>See How We Work</h1>
+            <p>Real photos from our workshop, branding process, and store. No stories — just proof.</p>
+        </div>
+    </section>
+
+    <!-- GALLERY 1: Overalls Production -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Workshop</span>
+                <h2>Overalls & Safety Wear Production</h2>
+                <p>From raw fabric to finished, branded workwear — see the process</p>
+            </div>
+            <div class="gallery-featured">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Main Workshop</span>
+                    <img src="images/products/overalls/over7.jpeg" alt="Frontmax Main Workshop - Overalls Production">
+                    <div class="gallery-overlay">
+                        <h4>Main Production Floor</h4>
+                        <span>Industrial sewing machines cutting & stitching overalls</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">rain coat</span>
+                    <img src="./images/products/overalls/over 1.jpeg" alt="Raw Fabric Storage">
+                    <div class="gallery-overlay">
+                        <h4>Raw Material Storage</h4>
+                        <span>High-quality cotton, polyester & reflective fabrics</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="./images/products/overalls/over3.jpeg" alt="Fabric Cutting Table">
+                    <div class="gallery-overlay">
+                        <h4>overalls</h4>
+                        <span>Pattern cutting for all sizes</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="./images/products/overalls/over4.jpeg" alt="Sewing Overalls">
+                    <div class="gallery-overlay">
+                        <h4>Industrial Sewing</h4>
+                        <span>Heavy-duty stitching for durability</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="./images/products/overalls/over6.jpeg" alt="Quality Check">
+                    <div class="gallery-overlay">
+                        <h4>Quality Inspection</h4>
+                        <span>Every piece checked before finishing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS STEPS -->
+    <section class="gallery-section alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">How We Make Them</span>
+                <h2>4 Steps to Your Branded Overalls</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step-card">
+                    <div class="step-num">1</div>
+                    <h4>Cut & Stitch</h4>
+                    <p>Precision cutting and industrial-grade sewing for all standard and custom sizes</p>
+                </div>
+                <div class="process-step-card">
+                    <div class="step-num">2</div>
+                    <h4>Brand It</h4>
+                    <p>Your company logo embroidered or screen-printed with professional-grade machines</p>
+                </div>
+                <div class="process-step-card">
+                    <div class="step-num">3</div>
+                    <h4>Add Reflective</h4>
+                    <p>High-visibility reflective strips applied for night and low-light safety compliance</p>
+                </div>
+                <div class="process-step-card">
+                    <div class="step-num">4</div>
+                    <h4>Pack & Deliver</h4>
+                    <p>Folded, labeled, and ready for pickup at our Lunga Lunga store or delivered to site</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY 2: Branding Process -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Branding</span>
+                <h2>Logo Embroidery & Screen Printing</h2>
+                <p>Your brand on every piece — professional and permanent</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Embroidery</span>
+                    <img src="./images/products/overalls/over5.jpeg" alt="Logo Embroidery Machine">
+                    <div class="gallery-overlay">
+                        <h4>Computerized Embroidery</h4>
+                        <span>Multi-head machines for bulk orders</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Screen Print</span>
+                    <img src="./images/products/overalls/over4.jpeg" alt="Screen Printing Setup">
+                    <div class="gallery-overlay">
+                        <h4>Screen Printing</h4>
+                        <span>Large-format prints on back panels</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Finished</span>
+                    <img src="./images/products/overalls/over7.jpeg" alt="Branded Overalls Finished">
+                    <div class="gallery-overlay">
+                        <h4>Finished Product</h4>
+                        <span>Your logo, your colors, ready to wear</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="./images/products/overalls/over2.jpeg" alt="Embroidery Closeup">
+                    <div class="gallery-overlay">
+                        <h4>Stitch Detail</h4>
+                        <span>Clean, durable threadwork</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="./images/products/overalls/over3.jpeg" alt="Bulk Order Branded Overalls">
+                    <div class="gallery-overlay">
+                        <h4>Bulk Orders</h4>
+                        <span>50, 100, 500+ pieces — no problem</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="./images/products/overalls/over5.jpeg" alt="Different Color Overalls">
+                    <div class="gallery-overlay">
+                        <h4>Color Options</h4>
+                        <span>Navy, orange, royal blue, hi-vis yellow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY 3: The Store -->
+    <section class="store-section">
+        <div class="container">
+            <div class="store-grid">
+                <div class="store-images">
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./images/ChatGPT Image May 2, 2026, 05_49_44 PM.png" alt="Frontmax Store Front">
+                        <div class="gallery-overlay">
+                            <h4>Store Front</h4>
+                            <span>Lunga Lunga Plaza</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./images/products/overalls/over7.jpeg" alt="Store Interior">
+                        <div class="gallery-overlay">
+                            <h4>Inside the Shop</h4>
+                            <span>Overalls, boots, helmets, gloves</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./images/products/overalls/over7.jpeg" alt="Product Shelves">
+                        <div class="gallery-overlay">
+                            <h4>Stock Shelves</h4>
+                            <span>Ready-to-buy inventory</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(this)">
+                        <img src="./images/ChatGPT Image May 2, 2026, 05_45_54 PM.png" alt="Service Counter">
+                        <div class="gallery-overlay">
+                            <h4>Service Counter</h4>
+                            <span>Order, pay, collect</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="store-info">
+                    <span class="section-tag">Visit Us</span>
+                    <h2>Our Store at Lunga Lunga Plaza</h2>
+                    <p>Walk in, see the products, feel the fabric, check the quality, and place your order. No need to guess — everything is on display.</p>
+                    <div class="store-details">
+                        <div class="store-detail"><i class="fas fa-map-marker-alt"></i> Lunga Lunga Plaza, Industrial Area, Nairobi</div>
+                        <div class="store-detail"><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM – 6:00 PM | Sat: 9:00 AM – 2:00 PM</div>
+                        <div class="store-detail"><i class="fas fa-phone-alt"></i> +254 706 303 581</div>
+                        <div class="store-detail"><i class="fas fa-boxes"></i> In-stock: Overalls, helmets, boots, gloves, goggles, masks</div>
+                        <div class="store-detail"><i class="fas fa-truck"></i> Bulk orders: Same-day pickup or next-day delivery</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 20px;"><i class="fas fa-directions"></i> Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY 4: Client Work -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Real Jobs</span>
+                <h2>Overalls We Have Branded for Clients</h2>
+                <p>Actual photos from completed orders — not stock images</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">raincoat</span>
+                    <img src="./images/products/overalls/over 1.jpeg" alt="Construction Company Branded Overalls">
+                    <div class="gallery-overlay">
+                        <h4>BuildCore Ltd</h4>
+                        <span>120 navy overalls + reflective strips</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Factory</span>
+                    <img src="./images/products/overalls/over5.jpeg" alt="Factory Staff in Branded Overalls">
+                    <div class="gallery-overlay">
+                        <h4>Precision Mfg</h4>
+                        <span>80 orange coveralls with back prints</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Logistics</span>
+                    <img src="./images/products/overalls/over4.jpeg" alt="Logistics Company Uniforms">
+                    <div class="gallery-overlay">
+                        <h4>Swift Logistics</h4>
+                        <span>200 hi-vis vests + overalls combo</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Oil & Gas</span>
+                    <img src="./images/products/overalls/over6.jpeg" alt="Oil Company Safety Wear">
+                    <div class="gallery-overlay">
+                        <h4>Gulf Energy</h4>
+                        <span>50 flame-resistant branded suits</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">Hospital</span>
+                    <img src="./images/products/overalls/over4.jpeg" alt="Hospital Staff Uniforms">
+                    <div class="gallery-overlay">
+                        <h4>City Hospital</h4>
+                        <span>300 scrubs + lab coats embroidered</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <span class="gallery-badge">School</span>
+                    <img src="./images/ChatGPT Image May 2, 2026, 05_48_09 PM.png" alt="School Workshop Uniforms">
+                    <div class="gallery-overlay">
+                        <h4>Tech Institute</h4>
+                        <span>150 student workshop overalls</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Want Your Logo on Overalls?</h2>
+            <p>Send us your logo. We will stitch it, show you a sample photo, and produce your full order.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/254706303581" class="btn btn-white"><i class="fab fa-whatsapp"></i> WhatsApp Us Your Logo</a>
+                <a href="contact.html" class="btn btn-outline-white">Visit the Store</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo">
+                            <img src="./images/logo (1).png" alt="Frontmax" style="height: 180px; width: auto; object-fit: contain; margin-bottom: 16px;">
+                        </a>
+                        <p>Your trusted partner for premium safety tools and equipment. Protecting workers with certified, high-quality solutions since 2010.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="shop.html">Shop All</a></li>
+                            <li><a href="about.html">company</a></li>
+                            <li><a href="services.html">Workshop</a></li>
+                            <!-- <li><a href="blog.html">Blog</a></li> -->
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="shop.html#head">Head Protection</a></li>
+                            <li><a href="shop.html#eye">Eye & Face</a></li>
+                            <li><a href="shop.html#hand">Hand Protection</a></li>
+                            <li><a href="shop.html#foot">Foot Protection</a></li>
+                            <li><a href="shop.html#body">Body Protection</a></li>
+                            <li><a href="shop.html#respiratory">Respiratory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div><strong>Headquarters</strong><p>Lunga Lunga Plaza<br>Lunga Lunga Road, Industrial Area<br>Nairobi, Kenya</p></div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <div><strong>Phone</strong><p>+254 706 303 581</p></div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div><strong>Email</strong><p>info@frontmax.com</p></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 Frontmax Safety Equipment. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Shipping Policy</a>
+                        <a href="#">Return Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary" onclick="toggleCart()">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="showToast('Checkout coming soon!')">Proceed to Checkout</button>
+            <button class="btn btn-outline" style="width: 100%;" onclick="toggleCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+        <img src="" alt="" id="lightboxImg">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/254706303581" class="whatsapp-float">
+        <button class="whatsapp-btn"><i class="fab fa-whatsapp"></i></button>
+    </a>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('frontmax_cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartUI();
+            initMobileMenu();
+            initBackToTop();
+        });
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            const container = document.getElementById('cartItems');
+            const footer = document.getElementById('cartFooter');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').textContent = '$' + subtotal.toFixed(2);
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-basket"></i><p>Your cart is empty</p><a href="shop.html" class="btn btn-primary" onclick="toggleCart()">Start Shopping</a></div>';
+                if (footer) footer.style.display = 'none';
+                return;
+            }
+            if (footer) footer.style.display = 'block';
+            let html = '';
+            for (let item of cart) {
+                html += '<div class="cart-item"><div class="cart-item-img"><i class="fas ' + item.icon + '"></i></div><div class="cart-item-details"><h4>' + item.name + '</h4><span class="item-price">$' + item.price.toFixed(2) + '</span><div class="quantity-control"><button class="qty-btn" onclick="updateQuantity(' + item.id + ', -1)">-</button><span>' + item.quantity + '</span><button class="qty-btn" onclick="updateQuantity(' + item.id + ', 1)">+</button><button class="remove-item" onclick="removeFromCart(' + item.id + ')"><i class="fas fa-trash-alt"></i></button></div></div></div>';
+            }
+            container.innerHTML = html;
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart(); updateCartUI();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) { removeFromCart(productId); }
+                else { saveCart(); updateCartUI(); }
+            }
+        }
+
+        function saveCart() { localStorage.setItem('frontmax_cart', JSON.stringify(cart)); }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+            document.getElementById('cartOverlay').classList.toggle('active');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function initMobileMenu() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const menu = document.getElementById('mobileMenu');
+            const closeBtn = document.getElementById('closeMobileMenu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            if (closeBtn && menu) {
+                closeBtn.addEventListener('click', () => {
+                    menu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            document.querySelectorAll('.mobile-dropdown > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const submenu = link.nextElementSibling;
+                    if (submenu) {
+                        submenu.classList.toggle('active');
+                        const icon = link.querySelector('i');
+                        if (icon) icon.style.transform = submenu.classList.contains('active') ? 'rotate(180deg)' : '';
+                    }
+                });
+            });
+        }
+
+        function initBackToTop() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            window.addEventListener('scroll', () => {
+                btn.classList.toggle('visible', window.pageYOffset > 500);
+            });
+        }
+
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        // Lightbox
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const caption = element.querySelector('.gallery-overlay h4')?.textContent || '';
+            const sub = element.querySelector('.gallery-overlay span')?.textContent || '';
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightboxCaption').textContent = caption + (sub ? ' — ' + sub : '');
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>

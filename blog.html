@@ -1,0 +1,1023 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Frontmax - Premium Safety Tools & Equipment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1b4332; --primary-light: #2d6a4f; --primary-dark: #081c15;
+            --accent: #74c69d; --accent-light: #95d5b2; --accent-dark: #52b788; --accent-pale: #d8f3dc;
+            --text: #1b4332; --text-light: #52796f; --text-muted: #84a98c;
+            --bg: #ffffff; --bg-cream: #f8f9f8; --bg-pale: #eaf4ea;
+            --border: #d8f3dc; --border-light: #e8f5e9;
+            --shadow-sm: 0 1px 3px rgba(27,67,50,0.08);
+            --shadow-md: 0 4px 12px rgba(27,67,50,0.1);
+            --shadow-lg: 0 10px 40px rgba(27,67,50,0.12);
+            --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; background: var(--bg); overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-decoration: none; font-family: inherit; }
+        .btn-primary { background: var(--accent-dark); color: white; border-color: var(--accent-dark); }
+        .btn-primary:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+        .btn-white { background: white; color: var(--primary); border-color: white; }
+        .btn-white:hover { background: var(--bg-cream); }
+        .btn-outline-white { background: transparent; color: white; border-color: rgba(255,255,255,0.5); }
+        .btn-outline-white:hover { background: white; color: var(--primary); }
+        .top-bar { background: var(--primary-dark); color: rgba(255,255,255,0.8); padding: 10px 0; font-size: 0.85rem; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-left { display: flex; gap: 24px; }
+        .top-left span { display: flex; align-items: center; gap: 8px; }
+        .top-left i { color: var(--accent-light); font-size: 0.85rem; }
+        .top-right { display: flex; gap: 14px; }
+        .top-right a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.85rem; }
+        .top-right a:hover { background: var(--accent); transform: translateY(-2px); }
+        .main-nav { background: white; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; overflow: visible; }
+        .logo img { filter: drop-shadow(0 4px 12px rgba(27,67,50,0.15)); }
+        .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+        .nav-links > li { position: relative; }
+        .nav-links > li > a { display: flex; align-items: center; gap: 6px; padding: 10px 16px; color: var(--text); font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--accent-dark); background: var(--accent-pale); }
+        .dropdown:hover > a i { transform: rotate(180deg); }
+        .dropdown-menu { position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition); list-style: none; border: 1px solid var(--border-light); }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li a { display: block; padding: 10px 16px; color: var(--text); font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .dropdown-menu li a:hover { background: var(--accent-pale); color: var(--primary); }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .search-box { position: relative; display: flex; align-items: center; }
+        .search-box input { width: 200px; padding: 10px 40px 10px 16px; border: 2px solid var(--border); border-radius: 30px; font-family: inherit; font-size: 0.9rem; transition: var(--transition); background: var(--bg-cream); }
+        .search-box input:focus { outline: none; border-color: var(--accent); width: 260px; background: white; }
+        .search-btn { position: absolute; right: 6px; background: var(--accent-dark); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: var(--primary); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .cart-icon:hover { background: var(--accent-pale); color: var(--primary); }
+        .cart-count { position: absolute; top: 2px; right: 2px; background: #e63946; color: white; font-size: 0.65rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .user-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--primary); cursor: pointer; transition: var(--transition); }
+        .user-icon:hover { background: var(--accent-pale); }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+        .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background: white; z-index: 2000; transition: var(--transition); overflow-y: auto; box-shadow: var(--shadow-lg); }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-header { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .close-mobile-menu { background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .mobile-nav-links { list-style: none; padding: 20px 0; }
+        .mobile-nav-links > li > a { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; color: var(--text); font-weight: 600; font-size: 1.1rem; border-bottom: 1px solid var(--border-light); text-decoration: none; }
+        .mobile-submenu { list-style: none; background: var(--bg-cream); display: none; }
+        .mobile-submenu.active { display: block; }
+        .mobile-submenu li a { display: block; padding: 12px 24px 12px 48px; color: var(--text-light); font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid var(--border-light); }
+        .mobile-contact { padding: 24px; background: var(--bg-cream); margin-top: 20px; }
+        .mobile-contact p { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text); font-weight: 500; }
+        .mobile-contact i { color: var(--accent-dark); width: 20px; }
+        
+        /* Page Header - Two Column with Image */
+        .page-header { 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); 
+            padding: 0; position: relative; overflow: hidden; 
+            min-height: 320px; display: flex; align-items: stretch;
+        }
+        .page-header-bg { 
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            opacity: 0.1; 
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); 
+        }
+        .page-header .container { position: relative; z-index: 2; width: 100%; height: 100%; }
+        .page-header-content { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0; 
+            align-items: stretch; height: 100%; min-height: 320px;
+        }
+        .page-header-text { 
+            display: flex; flex-direction: column; justify-content: center; 
+            padding: 30px 30px 30px 0; 
+        }
+        .page-header-image { 
+            position: relative; height: 100%; min-height: 320px; 
+            display: flex; align-items: flex-end; justify-content: flex-end; 
+            overflow: visible; margin-right: -24px;
+        }
+        .page-header-image img { 
+            height: 100%; width: calc(100% + 24px); max-width: none; 
+            object-fit: cover; object-position: center top; 
+            position: absolute; right: -24px; top: 0;
+        }
+        .page-header-image::after { 
+            content: ''; position: absolute; top: 0; left: 0; 
+            width: 120px; height: 100%; 
+            background: linear-gradient(to right, var(--primary), transparent); 
+            z-index: 2; pointer-events: none; 
+        }
+        .breadcrumb { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 20px; }
+        .breadcrumb a { color: rgba(255,255,255,0.9); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { color: var(--accent-light); }
+        .breadcrumb i { font-size: 0.7rem; }
+        .page-header h1 { font-size: 2.4rem; color: white; font-weight: 800; margin-bottom: 16px; }
+        .page-header p { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 600px; line-height: 1.7; }
+        .section-header { text-align: center; margin-bottom: 36px; }
+        .section-tag { display: inline-block; color: var(--accent-dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 12px; color: var(--primary); }
+        .section-header p { color: var(--text-light); font-size: 1.05rem; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+        
+        /* About Intro - TIGHT & SUMMARIZED */
+        .about-intro { padding: 50px 0; background: white; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; min-height: 350px; }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+        .about-image .experience-badge { position: absolute; bottom: 24px; left: 24px; background: var(--primary); color: white; padding: 18px 24px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 2; }
+        .experience-badge .years { font-size: 2.2rem; font-weight: 800; line-height: 1; display: block; margin-bottom: 4px; }
+        .experience-badge span:last-child { font-size: 0.8rem; opacity: 0.9; }
+        .about-text h2 { font-size: 1.9rem; color: var(--primary); margin-bottom: 16px; line-height: 1.2; }
+        .about-text > p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 14px; }
+        .about-stats-inline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+        .about-stat-inline h4 { font-size: 1.6rem; color: var(--primary); font-weight: 800; margin-bottom: 4px; }
+        .about-stat-inline p { color: var(--text-light); font-size: 0.8rem; font-weight: 500; }
+        
+        /* GALLERY SECTION - SHOWCASING BRANDING WORK */
+        .gallery-section { padding: 50px 0; background: var(--bg-cream); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .gallery-item { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 1; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-overlay { 
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(27,67,50,0.85), transparent 60%); 
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; opacity: 0; transition: var(--transition);
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h4 { color: white; font-size: 1rem; margin-bottom: 4px; }
+        .gallery-overlay span { color: rgba(255,255,255,0.8); font-size: 0.8rem; }
+        .gallery-item.featured { grid-column: span 2; grid-row: span 2; }
+        
+        /* Services We Offer - Compact Cards */
+        .services-section { padding: 50px 0; background: white; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .service-card { background: white; border-radius: var(--radius-lg); padding: 28px 22px; border: 1px solid var(--border); transition: var(--transition); text-align: center; }
+        .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--accent-light); }
+        .service-icon { width: 56px; height: 56px; background: var(--accent-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--accent-dark); font-size: 1.3rem; transition: var(--transition); }
+        .service-card:hover .service-icon { background: var(--accent-dark); color: white; }
+        .service-card h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
+        .service-card p { color: var(--text-light); font-size: 0.88rem; line-height: 1.6; }
+        
+        /* Mission - Single Compact Card */
+        .mission-section { padding: 50px 0; background: var(--bg-cream); }
+        .mission-card { background: white; border-radius: var(--radius-lg); padding: 40px; text-align: center; max-width: 800px; margin: 0 auto; border: 1px solid var(--border); }
+        .mission-card h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 16px; }
+        .mission-card p { color: var(--text-light); font-size: 1rem; line-height: 1.8; margin-bottom: 24px; }
+        .mission-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .mission-stat h4 { font-size: 1.8rem; color: var(--accent-dark); font-weight: 800; }
+        .mission-stat p { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
+        
+        /* CTA */
+        .cta-section { padding: 50px 0; background: linear-gradient(135deg, var(--accent-dark) 0%, var(--primary-light) 100%); text-align: center; }
+        .cta-section h2 { font-size: 2.2rem; color: white; margin-bottom: 16px; }
+        .cta-section > .container > p { color: rgba(255,255,255,0.9); font-size: 1.05rem; max-width: 600px; margin: 0 auto 32px; line-height: 1.7; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; }
+        
+        /* Footer */
+        footer { background: var(--primary-dark); color: white; }
+        .footer-top { padding: 40px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
+        .footer-brand .logo { margin-bottom: 20px; }
+        .footer-brand > p { color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 24px; font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 10px; }
+        .footer-social a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.9rem; }
+        .footer-social a:hover { background: var(--accent); transform: translateY(-3px); }
+        .footer-column h4 { font-size: 1rem; margin-bottom: 20px; color: white; position: relative; padding-bottom: 10px; }
+        .footer-column h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 3px; background: var(--accent); border-radius: 2px; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column ul li a { color: rgba(255,255,255,0.7); transition: var(--transition); font-size: 0.9rem; display: inline-block; text-decoration: none; }
+        .footer-column ul li a:hover { color: var(--accent-light); transform: translateX(4px); }
+        .footer-contact li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+        .footer-contact i { color: var(--accent); margin-top: 4px; font-size: 1rem; width: 20px; }
+        .footer-contact strong { color: white; display: block; margin-bottom: 4px; font-size: 0.9rem; }
+        .footer-contact p { color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.5; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
+        .footer-bottom-content { display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.85rem; transition: var(--transition); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-light); }
+        
+        /* Cart */
+        .cart-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .cart-overlay.active { opacity: 1; visibility: visible; }
+        .cart-sidebar { position: fixed; top: 0; right: -450px; width: 450px; max-width: 100%; height: 100vh; background: white; z-index: 2000; transition: var(--transition); display: flex; flex-direction: column; box-shadow: var(--shadow-lg); }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .cart-header h3 { font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .close-cart { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-light); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .close-cart:hover { background: var(--bg-cream); color: #e63946; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 24px; }
+        .cart-empty { text-align: center; padding: 60px 20px; }
+        .cart-empty i { font-size: 4rem; color: var(--border); margin-bottom: 20px; display: block; }
+        .cart-empty p { color: var(--text-light); margin-bottom: 24px; font-size: 1.05rem; }
+        .cart-item { display: flex; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border-light); }
+        .cart-item-img { width: 80px; height: 80px; background: var(--bg-cream); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border); }
+        .cart-item-img i { font-size: 1.8rem; color: var(--accent-dark); opacity: 0.5; }
+        .cart-item-details { flex: 1; }
+        .cart-item-details h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 6px; font-weight: 600; }
+        .item-price { color: var(--accent-dark); font-weight: 700; margin-bottom: 12px; display: block; }
+        .quantity-control { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { width: 32px; height: 32px; border: 1px solid var(--border); background: white; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: var(--text); font-weight: 600; }
+        .qty-btn:hover { background: var(--accent-pale); border-color: var(--accent); }
+        .remove-item { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 4px; transition: var(--transition); }
+        .remove-item:hover { color: #e63946; }
+        .cart-footer { padding: 24px; border-top: 1px solid var(--border); background: var(--bg-cream); }
+        .cart-subtotal, .cart-shipping { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-light); }
+        .cart-total { display: flex; justify-content: space-between; margin: 16px 0 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 18px 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 3000; transform: translateY(100px); opacity: 0; transition: var(--transition); display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { color: var(--accent-light); font-size: 1.3rem; }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; background: var(--accent-dark); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: var(--shadow-md); z-index: 999; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--primary); transform: translateY(-3px); }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+        .whatsapp-btn {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+            position: relative;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+        .whatsapp-btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #25D366;
+            animation: whatsapp-pulse 2s infinite;
+            z-index: -1;
+        }
+        @keyframes whatsapp-pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            70% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        .whatsapp-tooltip {
+            background: white;
+            color: var(--text);
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(10px);
+            transition: var(--transition);
+            margin-bottom: 4px;
+        }
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        .whatsapp-popup {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transition: var(--transition);
+            z-index: 10000;
+        }
+        .whatsapp-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .whatsapp-popup-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .whatsapp-popup-header i {
+            width: 48px;
+            height: 48px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+        }
+        .whatsapp-popup-header div h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        .whatsapp-popup-header div span {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+        .whatsapp-popup p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .whatsapp-popup .location {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding: 12px;
+            background: var(--bg-cream);
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+        .whatsapp-popup .location i {
+            color: var(--accent-dark);
+            margin-top: 2px;
+        }
+        .whatsapp-number {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--bg-cream);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        .whatsapp-number:hover {
+            background: var(--accent-pale);
+            color: var(--primary);
+        }
+        .whatsapp-number i {
+            color: #25D366;
+            font-size: 1.2rem;
+        }
+        .whatsapp-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .whatsapp-close:hover {
+            background: var(--bg-cream);
+            color: #e63946;
+        }
+        
+        /* Lightbox */
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 5000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox img { max-width: 90%; max-height: 90%; border-radius: var(--radius-md); }
+        .lightbox-close { position: absolute; top: 24px; right: 24px; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; }
+        
+        @media (max-width: 1200px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } .services-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 992px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-image { min-height: 300px; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-item.featured { grid-column: span 2; grid-row: span 1; } .services-grid { grid-template-columns: 1fr; } .search-box { display: none; } .nav-links { display: none; } .mobile-menu-btn { display: flex; } .page-header h1 { font-size: 2.2rem; } .page-header-content { grid-template-columns: 1fr; } .page-header-image { display: none; } }
+        @media (max-width: 768px) { .top-bar .container { flex-direction: column; gap: 10px; text-align: center; } .gallery-grid { grid-template-columns: repeat(2, 1fr); } .gallery-item.featured { grid-column: span 2; } .mission-stats { grid-template-columns: 1fr; gap: 16px; } .section-header h2 { font-size: 1.8rem; } .about-text h2 { font-size: 1.6rem; } .cta-section h2 { font-size: 1.9rem; } .footer-bottom-content { flex-direction: column; gap: 16px; text-align: center; } .footer-grid { grid-template-columns: 1fr; gap: 40px; } .cart-sidebar { width: 100%; } .page-header { min-height: auto; } .page-header-text { padding: 20px 0; } .whatsapp-float { bottom: 80px; right: 16px; } .whatsapp-btn { width: 54px; height: 54px; font-size: 1.6rem; } .whatsapp-popup { width: 280px; right: -10px; } }
+        @media (max-width: 480px) { .page-header h1 { font-size: 1.7rem; } .gallery-grid { grid-template-columns: 1fr; } .gallery-item.featured { grid-column: span 1; } .cta-buttons { flex-direction: column; } .btn { width: 100%; } .page-header-text { padding: 20px 0; } }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-phone-alt"></i> +254 706 303 581</span>
+                <span><i class="fas fa-envelope"></i> info@frontmax.com</span>
+                <span><i class="fas fa-clock"></i> Mon-Fri 8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="top-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo (1).png" alt="Frontmax" style="height: 200px; width: auto; object-fit: contain; position: relative; z-index: 1001;">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="shop.html#head">Head Protection</a></li>
+                        <li><a href="shop.html#eye">Eye & Face</a></li>
+                        <li><a href="shop.html#hand">Hand Protection</a></li>
+                        <li><a href="shop.html#foot">Foot Protection</a></li>
+                        <li><a href="shop.html#body">Body Protection</a></li>
+                        <li><a href="shop.html#respiratory">Respiratory</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." id="searchInput" onkeyup="if(event.key==='Enter')searchProducts()">
+                    <button class="search-btn" onclick="searchProducts()"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="user-icon"><i class="fas fa-user"></i></div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">
+                <img src="./images/logo (1).png" alt="Frontmax" style="height: 180px; width: auto; object-fit: contain;">
+            </a>
+            <button class="close-mobile-menu" id="closeMobileMenu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-submenu">
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="shop.html#head">Head Protection</a></li>
+                    <li><a href="shop.html#eye">Eye & Face</a></li>
+                    <li><a href="shop.html#hand">Hand Protection</a></li>
+                    <li><a href="shop.html#foot">Foot Protection</a></li>
+                </ul>
+            </li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html" class="active">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-contact">
+            <p><i class="fas fa-phone-alt"></i> +254 706 303 581</p>
+            <p><i class="fas fa-envelope"></i> info@frontmax.com</p>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg"></div>
+        <div class="container">
+            <div class="page-header-content">
+                <div class="page-header-text">
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>About Us</span>
+                    </div>
+                    <h1>About Frontmax</h1>
+                    <p>Premium safety equipment and custom branding solutions for businesses across East Africa since 2010.</p>
+                </div>
+                <div class="page-header-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/cdn.prod.website-files.com/ec53a26f56d8f7cee0297109c19543f18f796b04.jpg" alt="Frontmax Safety Equipment">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Intro -->
+    <section class="about-intro">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/essentialworkwear.com/cbe1eaee29224050027fa86ff5de5e6931a48821.png" alt="Branded Safety Gear">
+                    <div class="experience-badge">
+                        <span class="years">14+</span>
+                        <span>Years of Excellence</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <span class="section-tag">Our Story</span>
+                    <h2>Safety Meets Brand Identity</h2>
+                    <p>Frontmax is your one-stop partner for workplace safety and corporate branding. We don't just supply helmets and gloves — we design, print, and brand reflector vests, overalls, and safety gear that puts your company logo front and center.</p>
+                    <p>From custom-printed high-vis vests for construction crews to embroidered coveralls for factory teams, we help businesses look professional while staying protected.</p>
+                    <div class="about-stats-inline">
+                        <div class="about-stat-inline">
+                            <h4>10K+</h4>
+                            <p>Products Delivered</p>
+                        </div>
+                        <div class="about-stat-inline">
+                            <h4>300+</h4>
+                            <p>Business Clients</p>
+                        </div>
+                        <div class="about-stat-inline">
+                            <h4>98%</h4>
+                            <p>Satisfaction Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do - Compact Services -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Expertise</span>
+                <h2>What We Do Best</h2>
+                <p>From supply to custom branding — we've got you covered</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>Safety Equipment Supply</h3>
+                    <p>Certified helmets, gloves, boots, goggles, and full PPE kits for every industry.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-vest"></i></div>
+                    <h3>Custom Reflector Vests</h3>
+                    <p>High-visibility vests branded with your logo, staff names, and safety ratings.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>Branded Overalls</h3>
+                    <p>Custom-designed coveralls with company embroidery, reflective strips, and color coding.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-print"></i></div>
+                    <h3>Screen & Digital Printing</h3>
+                    <p>Logo printing on t-shirts, caps, uniforms, and promotional safety items.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                    <h3>Embroidery Services</h3>
+                    <p>Professional embroidery on overalls, jackets, and corporate workwear.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Bulk Orders & Delivery</h3>
+                    <p>Corporate bulk orders with fast turnaround and nationwide delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery - Our Work -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2>Our Branding Work</h2>
+                <p>Real projects — real impact. See how we transform safety gear into brand assets.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item featured" onclick="openLightbox(this)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dirtyhanddesigns.com/bafe86daa15ad75564985179f32c050655303365.jpg" alt="Custom Printed Safety Vest">
+                    <div class="gallery-overlay">
+                        <h4>Custom Logo Vests</h4>
+                        <span>Corporate branding on high-vis</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/themerchlist.com/babd50d3b203333ce55ea44fbc1a91e01e4661b1.jpeg" alt="Safety Coveralls">
+                    <div class="gallery-overlay">
+                        <h4>Reflective Coveralls</h4>
+                        <span>Industrial-grade protection</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.hi-viz.com/3e6ac097548b50208fd00ec93f1ac87a068cf9b6.png" alt="Back Print Vest">
+                    <div class="gallery-overlay">
+                        <h4>Back Print Designs</h4>
+                        <span>Full-back custom graphics</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/image.coastalreign.com/5080d8d1fdbba4cab2b810e0d70b1799fddd115d.png" alt="Safety Overalls">
+                    <div class="gallery-overlay">
+                        <h4>Bib Overalls</h4>
+                        <span>Heavy-duty branded workwear</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/technopackcorp.com/9ad85b9bb851159363b39b5c73bfb0e7e24b0744.png" alt="Role-Based Vests">
+                    <div class="gallery-overlay">
+                        <h4>Role-Based Printing</h4>
+                        <span>Staff, Security, Visitor IDs</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/themerchlist.com/d43ca7553f05cceb775d9f317d39b81fce1b5ab3.jpeg" alt="Green Coveralls">
+                    <div class="gallery-overlay">
+                        <h4>Color-Coded Gear</h4>
+                        <span>Department identification</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.ritzsafety.com/560f3cc56cda6da466af33bf3d8de633da47cd7f.jpg" alt="Team Vests">
+                    <div class="gallery-overlay">
+                        <h4>Team Uniforms</h4>
+                        <span>Consistent brand presence</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission - Compact -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-card">
+                <span class="section-tag">Why Choose Us</span>
+                <h3>We Don't Just Sell Safety Gear — We Brand It</h3>
+                <p>Every piece of equipment that leaves our shop at Lunga Lunga Plaza carries a promise: certified protection, professional appearance, and brand visibility. Whether you need 10 vests or 1,000 overalls, we deliver with the same attention to detail.</p>
+                <div class="mission-stats">
+                    <div class="mission-stat">
+                        <h4>24-48h</h4>
+                        <p>Delivery Nationwide</p>
+                    </div>
+                    <div class="mission-stat">
+                        <h4>Same-Day</h4>
+                        <p>Printing Available</p>
+                    </div>
+                    <div class="mission-stat">
+                        <h4>Bulk</h4>
+                        <p>Corporate Discounts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Brand Your Safety Gear?</h2>
+            <p>Get a free quote for custom-printed reflectors, overalls, and branded workwear.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/254706303581" class="btn btn-white" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                <a href="shop.html" class="btn btn-outline-white">Browse Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo">
+                            <img src="./images/logo (1).png" alt="Frontmax" style="height: 180px; width: auto; object-fit: contain; margin-bottom: 16px;">
+                        </a>
+                        <p>Your trusted partner for premium safety tools, equipment, and custom branding solutions. Protecting workers and promoting brands since 2010.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="shop.html">Shop All</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><a href="#">Custom Reflectors</a></li>
+                            <li><a href="#">Branded Overalls</a></li>
+                            <li><a href="#">Logo Printing</a></li>
+                            <li><a href="#">Embroidery</a></li>
+                            <li><a href="#">Bulk Orders</a></li>
+                            <li><a href="#">Safety Consulting</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div><strong>Workshop</strong><p>Lunga Lunga Plaza<br>Lunga Lunga Road, Industrial Area<br>Nairobi, Kenya</p></div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <div><strong>Phone</strong><p>+254 706 303 581<br>+254 720 566 116</p></div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div><strong>Email</strong><p>info@frontmax.com<br>sales@frontmax.com</p></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 Frontmax Safety Equipment. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Shipping Policy</a>
+                        <a href="#">Return Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <div class="whatsapp-tooltip">Chat on WhatsApp</div>
+        <button class="whatsapp-btn" onclick="toggleWhatsAppPopup()" id="whatsappBtn">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <div class="whatsapp-popup" id="whatsappPopup">
+            <button class="whatsapp-close" onclick="toggleWhatsAppPopup()"><i class="fas fa-times"></i></button>
+            <div class="whatsapp-popup-header">
+                <i class="fab fa-whatsapp"></i>
+                <div>
+                    <h4>Frontmax Safety</h4>
+                    <span>Typically replies in minutes</span>
+                </div>
+            </div>
+            <p>Hi there! How can we help you with your safety equipment needs today?</p>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Lunga Lunga Plaza Building<br>Industrial Area, Nairobi</span>
+            </div>
+            <a href="https://wa.me/254706303581" class="whatsapp-number" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>0706 303 581 (Main)</span>
+            </a>
+            <a href="https://wa.me/254720566116" class="whatsapp-number" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>0720 566 116</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+        <img src="" alt="Gallery Image" id="lightboxImg">
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary" onclick="toggleCart()">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-subtotal"><span>Subtotal:</span><span id="cartSubtotal">$0.00</span></div>
+            <div class="cart-shipping"><span>Shipping:</span><span id="cartShipping">Calculated at checkout</span></div>
+            <div class="cart-total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="showToast('Checkout coming soon!')">Proceed to Checkout</button>
+            <button class="btn btn-outline" style="width: 100%;" onclick="toggleCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('frontmax_cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartUI();
+            initMobileMenu();
+            initBackToTop();
+        });
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            const container = document.getElementById('cartItems');
+            const footer = document.getElementById('cartFooter');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartSubtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('cartTotal').textContent = '$' + subtotal.toFixed(2);
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-basket"></i><p>Your cart is empty</p><a href="shop.html" class="btn btn-primary" onclick="toggleCart()">Start Shopping</a></div>';
+                if (footer) footer.style.display = 'none';
+                return;
+            }
+            if (footer) footer.style.display = 'block';
+            let html = '';
+            for (let item of cart) {
+                html += '<div class="cart-item"><div class="cart-item-img"><i class="fas ' + item.icon + '"></i></div><div class="cart-item-details"><h4>' + item.name + '</h4><span class="item-price">$' + item.price.toFixed(2) + '</span><div class="quantity-control"><button class="qty-btn" onclick="updateQuantity(' + item.id + ', -1)">-</button><span>' + item.quantity + '</span><button class="qty-btn" onclick="updateQuantity(' + item.id + ', 1)">+</button><button class="remove-item" onclick="removeFromCart(' + item.id + ')"><i class="fas fa-trash-alt"></i></button></div></div></div>';
+            }
+            container.innerHTML = html;
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart(); updateCartUI();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) { removeFromCart(productId); }
+                else { saveCart(); updateCartUI(); }
+            }
+        }
+
+        function saveCart() { localStorage.setItem('frontmax_cart', JSON.stringify(cart)); }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+            document.getElementById('cartOverlay').classList.toggle('active');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function initMobileMenu() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const menu = document.getElementById('mobileMenu');
+            const closeBtn = document.getElementById('closeMobileMenu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            if (closeBtn && menu) {
+                closeBtn.addEventListener('click', () => {
+                    menu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            document.querySelectorAll('.mobile-dropdown > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const submenu = link.nextElementSibling;
+                    if (submenu) {
+                        submenu.classList.toggle('active');
+                        const icon = link.querySelector('i');
+                        if (icon) icon.style.transform = submenu.classList.contains('active') ? 'rotate(180deg)' : '';
+                    }
+                });
+            });
+        }
+
+        function initBackToTop() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            window.addEventListener('scroll', () => {
+                btn.classList.toggle('visible', window.pageYOffset > 500);
+            });
+        }
+
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+        function toggleWhatsAppPopup() {
+            const popup = document.getElementById('whatsappPopup');
+            popup.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            const popup = document.getElementById('whatsappPopup');
+            const btn = document.getElementById('whatsappBtn');
+            if (popup && btn && !popup.contains(e.target) && !btn.contains(e.target)) {
+                popup.classList.remove('active');
+            }
+        });
+
+        // Lightbox
+        function openLightbox(item) {
+            const img = item.querySelector('img').src;
+            document.getElementById('lightboxImg').src = img;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    
+        const products = [
+            { id: 1, name: "Industrial Safety Helmet", category: "Head Protection", price: 45.99, oldPrice: 59.99, badge: "Best Seller", icon: "fa-hard-hat" },
+            { id: 2, name: "Anti-Fog Safety Goggles", category: "Eye & Face Protection", price: 24.99, oldPrice: 32.99, badge: "New", icon: "fa-glasses" },
+            { id: 3, name: "Cut-Resistant Work Gloves", category: "Hand Protection", price: 18.50, oldPrice: 25.00, badge: null, icon: "fa-hands" },
+            { id: 4, name: "Steel Toe Safety Boots", category: "Foot Protection", price: 89.99, oldPrice: 120.00, badge: "Popular", icon: "fa-shoe-prints" }
+        ];
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!query) {
+                showToast('Please enter a search term');
+                return;
+            }
+            const results = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query)
+            );
+            if (results.length === 0) {
+                showToast('No products found for "' + query + '"');
+            } else {
+                showToast('Found ' + results.length + ' product(s) for "' + query + '"');
+                window.location.href = 'shop.html?q=' + encodeURIComponent(query);
+            }
+        }
+    </script>
+</body>
+</html>

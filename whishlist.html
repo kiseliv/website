@@ -1,0 +1,523 @@
+<!-- wishlist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist | Frontmax Safety Equipment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1b4332; --primary-light: #2d6a4f; --primary-dark: #081c15;
+            --accent: #74c69d; --accent-light: #95d5b2; --accent-dark: #52b788; --accent-pale: #d8f3dc;
+            --text: #1b4332; --text-light: #52796f; --text-muted: #84a98c;
+            --bg: #ffffff; --bg-cream: #f8f9f8; --bg-pale: #eaf4ea;
+            --border: #d8f3dc; --border-light: #e8f5e9;
+            --shadow-sm: 0 1px 3px rgba(27,67,50,0.08);
+            --shadow-md: 0 4px 12px rgba(27,67,50,0.1);
+            --shadow-lg: 0 10px 40px rgba(27,67,50,0.12);
+            --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; background: var(--bg); overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-decoration: none; font-family: inherit; }
+        .btn-primary { background: var(--accent-dark); color: white; border-color: var(--accent-dark); }
+        .btn-primary:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+        .btn-danger { background: transparent; color: #e63946; border-color: #e63946; }
+        .btn-danger:hover { background: #e63946; color: white; }
+        .btn-sm { padding: 10px 20px; font-size: 0.85rem; }
+        .top-bar { background: var(--primary-dark); color: rgba(255,255,255,0.8); padding: 10px 0; font-size: 0.85rem; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-left { display: flex; gap: 24px; }
+        .top-left span { display: flex; align-items: center; gap: 8px; }
+        .top-left i { color: var(--accent-light); font-size: 0.85rem; }
+        .top-right { display: flex; gap: 14px; }
+        .top-right a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.85rem; }
+        .top-right a:hover { background: var(--accent); transform: translateY(-2px); }
+        .main-nav { background: white; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 46px; height: 46px; background: linear-gradient(135deg, var(--accent-dark), var(--primary-light)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; }
+        .logo-main { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .logo-tag { font-size: 0.7rem; color: var(--accent-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+        .nav-links > li { position: relative; }
+        .nav-links > li > a { display: flex; align-items: center; gap: 6px; padding: 10px 16px; color: var(--text); font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--accent-dark); background: var(--accent-pale); }
+        .nav-links > li > a i { font-size: 0.7rem; transition: var(--transition); }
+        .dropdown:hover > a i { transform: rotate(180deg); }
+        .dropdown-menu { position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition); list-style: none; border: 1px solid var(--border-light); }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li a { display: block; padding: 10px 16px; color: var(--text); font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .dropdown-menu li a:hover { background: var(--accent-pale); color: var(--primary); }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .search-box { position: relative; display: flex; align-items: center; }
+        .search-box input { width: 220px; padding: 10px 42px 10px 16px; border: 2px solid var(--border); border-radius: 30px; font-family: inherit; font-size: 0.9rem; transition: var(--transition); background: var(--bg-cream); }
+        .search-box input:focus { outline: none; border-color: var(--accent); width: 280px; background: white; }
+        .search-btn { position: absolute; right: 6px; background: var(--accent-dark); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: var(--primary); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .cart-icon:hover { background: var(--accent-pale); color: var(--primary); }
+        .cart-count { position: absolute; top: 2px; right: 2px; background: #e63946; color: white; font-size: 0.65rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .user-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--primary); cursor: pointer; transition: var(--transition); }
+        .user-icon:hover { background: var(--accent-pale); }
+        .wishlist-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: #e63946; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); text-decoration: none; }
+        .wishlist-icon:hover { background: rgba(230,57,70,0.1); }
+        .wishlist-count { position: absolute; top: 2px; right: 2px; background: var(--primary); color: white; font-size: 0.65rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+        .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background: white; z-index: 2000; transition: var(--transition); overflow-y: auto; box-shadow: var(--shadow-lg); }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-header { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .close-mobile-menu { background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .mobile-nav-links { list-style: none; padding: 20px 0; }
+        .mobile-nav-links > li > a { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; color: var(--text); font-weight: 600; font-size: 1.1rem; border-bottom: 1px solid var(--border-light); text-decoration: none; }
+        .mobile-submenu { list-style: none; background: var(--bg-cream); display: none; }
+        .mobile-submenu.active { display: block; }
+        .mobile-submenu li a { display: block; padding: 12px 24px 12px 48px; color: var(--text-light); font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid var(--border-light); }
+        .mobile-contact { padding: 24px; background: var(--bg-cream); margin-top: 20px; }
+        .mobile-contact p { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text); font-weight: 500; }
+        .mobile-contact i { color: var(--accent-dark); width: 20px; }
+        .page-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 100px 0 80px; text-align: center; position: relative; overflow: hidden; }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .page-header .container { position: relative; z-index: 1; }
+        .page-header h1 { font-size: 3rem; color: white; margin-bottom: 16px; font-weight: 800; }
+        .page-header p { color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        .breadcrumb { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+        .breadcrumb a { color: var(--accent-light); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* Wishlist Specific */
+        .wishlist-section { padding: 80px 0 100px; background: var(--bg-cream); }
+        .wishlist-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding: 20px 24px; background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+        .wishlist-toolbar p { color: var(--text-light); font-size: 0.95rem; }
+        .wishlist-toolbar p strong { color: var(--primary); }
+        .wishlist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .wishlist-card { background: white; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: var(--transition); position: relative; }
+        .wishlist-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); border-color: var(--accent-light); }
+        .wishlist-remove { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: white; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); color: var(--text-muted); z-index: 2; box-shadow: var(--shadow-sm); }
+        .wishlist-remove:hover { background: #e63946; color: white; border-color: #e63946; }
+        .wishlist-img { height: 220px; background: linear-gradient(135deg, var(--bg-cream), var(--accent-pale)); display: flex; align-items: center; justify-content: center; position: relative; }
+        .wishlist-img i { font-size: 4rem; color: var(--accent-dark); opacity: 0.4; transition: var(--transition); }
+        .wishlist-card:hover .wishlist-img i { opacity: 0.6; transform: scale(1.05); }
+        .wishlist-badge { position: absolute; top: 16px; left: 16px; background: var(--accent-dark); color: white; padding: 6px 14px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .wishlist-info { padding: 24px; }
+        .wishlist-category { color: var(--accent-dark); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .wishlist-info h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 12px; font-weight: 600; line-height: 1.4; }
+        .wishlist-price { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .wishlist-price .current { font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+        .wishlist-price .old { font-size: 0.95rem; color: var(--text-muted); text-decoration: line-through; }
+        .wishlist-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); }
+        .wishlist-rating i { color: #f4a261; }
+        .wishlist-actions { display: flex; gap: 10px; }
+        .wishlist-actions .btn { flex: 1; padding: 12px; font-size: 0.9rem; }
+        .wishlist-empty { text-align: center; padding: 100px 20px; background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+        .wishlist-empty i { font-size: 5rem; color: var(--border); margin-bottom: 24px; display: block; }
+        .wishlist-empty h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 12px; }
+        .wishlist-empty p { color: var(--text-light); margin-bottom: 28px; font-size: 1.05rem; }
+        .moved-toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--primary); color: white; padding: 16px 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 3000; opacity: 0; transition: var(--transition); display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .moved-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        /* Toast */
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 18px 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 3000; transform: translateY(100px); opacity: 0; transition: var(--transition); display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { color: var(--accent-light); font-size: 1.3rem; }
+
+        /* Footer */
+        footer { background: var(--primary-dark); color: white; }
+        .footer-top { padding: 80px 0 60px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; }
+        .footer-brand .logo { margin-bottom: 24px; }
+        .footer-brand > p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 28px; font-size: 0.95rem; }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social a { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.95rem; }
+        .footer-social a:hover { background: var(--accent); transform: translateY(-3px); }
+        .footer-column h4 { font-size: 1.1rem; margin-bottom: 24px; color: white; position: relative; padding-bottom: 12px; }
+        .footer-column h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 3px; background: var(--accent); border-radius: 2px; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 12px; }
+        .footer-column ul li a { color: rgba(255,255,255,0.7); transition: var(--transition); font-size: 0.95rem; display: inline-block; text-decoration: none; }
+        .footer-column ul li a:hover { color: var(--accent-light); transform: translateX(4px); }
+        .footer-contact li { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+        .footer-contact i { color: var(--accent); margin-top: 4px; font-size: 1.1rem; width: 20px; }
+        .footer-contact strong { color: white; display: block; margin-bottom: 4px; font-size: 0.95rem; }
+        .footer-contact p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 0; }
+        .footer-bottom-content { display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.9rem; transition: var(--transition); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-light); }
+
+        @media (max-width: 1200px) { .wishlist-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 992px) { .nav-links { display: none; } .mobile-menu-btn { display: flex; } .search-box { display: none; } .page-header h1 { font-size: 2.2rem; } }
+        @media (max-width: 768px) { .wishlist-grid { grid-template-columns: 1fr; } .wishlist-toolbar { flex-direction: column; gap: 12px; text-align: center; } .footer-grid { grid-template-columns: 1fr; gap: 40px; } .footer-bottom-content { flex-direction: column; gap: 16px; text-align: center; } }
+        @media (max-width: 480px) { .page-header h1 { font-size: 1.9rem; } .wishlist-actions { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</span>
+                <span><i class="fas fa-envelope"></i> info@frontmax.com</span>
+                <span><i class="fas fa-clock"></i> Mon-Fri 8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="top-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+                <div><div class="logo-main">FRONTMAX</div><div class="logo-tag">Safety Equipment</div></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="shop.html#head">Head Protection</a></li>
+                        <li><a href="shop.html#eye">Eye & Face</a></li>
+                        <li><a href="shop.html#hand">Hand Protection</a></li>
+                        <li><a href="shop.html#foot">Foot Protection</a></li>
+                        <li><a href="shop.html#body">Body Protection</a></li>
+                        <li><a href="shop.html#respiratory">Respiratory</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." id="searchInput">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <a href="wishlist.html" class="wishlist-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </a>
+                <div class="cart-icon" onclick="window.location.href='cart.html'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="user-icon"><i class="fas fa-user"></i></div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="logo-main">FRONTMAX</div>
+            </a>
+            <button class="close-mobile-menu" id="closeMobileMenu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-submenu">
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="shop.html#head">Head Protection</a></li>
+                    <li><a href="shop.html#eye">Eye & Face</a></li>
+                    <li><a href="shop.html#hand">Hand Protection</a></li>
+                </ul>
+            </li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-contact">
+            <p><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> info@frontmax.com</p>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="shop.html">Shop</a>
+                <span>/</span>
+                <span>Wishlist</span>
+            </div>
+            <h1>My Wishlist</h1>
+            <p>Save your favorite safety equipment for later</p>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section class="wishlist-section">
+        <div class="container">
+            <div class="wishlist-toolbar">
+                <p><strong id="wishlistTotal">0</strong> items saved</p>
+                <button class="btn btn-danger btn-sm" onclick="clearWishlist()" id="clearWishlistBtn" style="display:none;">
+                    <i class="fas fa-trash-alt"></i> Clear Wishlist
+                </button>
+            </div>
+            <div id="wishlistContent"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo">
+                            <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div><div class="logo-main">FRONTMAX</div><div class="logo-tag">Safety Equipment</div></div>
+                        </a>
+                        <p>Your trusted partner for premium safety tools and equipment. Protecting workers with certified, high-quality solutions since 2010.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="shop.html">Shop All</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="shop.html#head">Head Protection</a></li>
+                            <li><a href="shop.html#eye">Eye & Face</a></li>
+                            <li><a href="shop.html#hand">Hand Protection</a></li>
+                            <li><a href="shop.html#foot">Foot Protection</a></li>
+                            <li><a href="shop.html#body">Body Protection</a></li>
+                            <li><a href="shop.html#respiratory">Respiratory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-contact">
+                            <li><i class="fas fa-map-marker-alt"></i><div><strong>Headquarters</strong><p>123 Industrial Ave, Suite 400<br>New York, NY 10001</p></div></li>
+                            <li><i class="fas fa-phone-alt"></i><div><strong>Phone</strong><p>+1 (555) 123-4567<br>+1 (555) 987-6543</p></div></li>
+                            <li><i class="fas fa-envelope"></i><div><strong>Email</strong><p>info@frontmax.com<br>sales@frontmax.com</p></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 Frontmax Safety Equipment. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Shipping Policy</a>
+                        <a href="#">Return Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <!-- Moved Toast -->
+    <div class="moved-toast" id="movedToast">
+        <i class="fas fa-check-circle"></i>
+        <span id="movedMessage">Item moved to cart</span>
+    </div>
+
+    <script>
+        const allProducts = [
+            { id: 1, name: "Industrial Safety Helmet", category: "Head Protection", price: 45.99, oldPrice: 59.99, badge: "Best Seller", icon: "fa-hard-hat", rating: 4.8, reviews: 124 },
+            { id: 2, name: "Anti-Fog Safety Goggles", category: "Eye & Face Protection", price: 24.99, oldPrice: 32.99, badge: "New", icon: "fa-glasses", rating: 4.6, reviews: 89 },
+            { id: 3, name: "Cut-Resistant Work Gloves", category: "Hand Protection", price: 18.50, oldPrice: 25.00, badge: null, icon: "fa-hands", rating: 4.7, reviews: 215 },
+            { id: 4, name: "Steel Toe Safety Boots", category: "Foot Protection", price: 89.99, oldPrice: 120.00, badge: "Popular", icon: "fa-shoe-prints", rating: 4.9, reviews: 342 },
+            { id: 5, name: "Hi-Vis Safety Vest Class 2", category: "Body Protection", price: 15.99, oldPrice: 22.99, badge: null, icon: "fa-vest", rating: 4.5, reviews: 178 },
+            { id: 6, name: "N95 Respirator Mask (10pk)", category: "Respiratory", price: 35.00, oldPrice: 45.00, badge: "Sale", icon: "fa-lungs", rating: 4.7, reviews: 456 },
+            { id: 7, name: "Welding Face Shield", category: "Eye & Face Protection", price: 55.00, oldPrice: 70.00, badge: null, icon: "fa-shield-alt", rating: 4.4, reviews: 67 },
+            { id: 8, name: "Chemical Resistant Gloves", category: "Hand Protection", price: 28.99, oldPrice: 38.99, badge: null, icon: "fa-hand-paper", rating: 4.6, reviews: 134 },
+            { id: 9, name: "Fire Extinguisher 5LB", category: "Fire Safety", price: 65.00, oldPrice: 85.00, badge: "Essential", icon: "fa-fire-extinguisher", rating: 4.8, reviews: 98 },
+            { id: 10, name: "First Aid Kit OSHA Compliant", category: "First Aid", price: 42.50, oldPrice: 55.00, badge: null, icon: "fa-first-aid", rating: 4.9, reviews: 267 },
+            { id: 11, name: "Ear Protection Earmuffs", category: "Head Protection", price: 22.99, oldPrice: 29.99, badge: null, icon: "fa-headphones", rating: 4.3, reviews: 89 },
+            { id: 12, name: "Fall Protection Harness", category: "Body Protection", price: 145.00, oldPrice: 189.00, badge: "Pro", icon: "fa-user-shield", rating: 4.8, reviews: 56 }
+        ];
+
+        let wishlist = JSON.parse(localStorage.getItem('frontmax_wishlist')) || [];
+        let cart = JSON.parse(localStorage.getItem('frontmax_cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateWishlistUI();
+            updateCartCount();
+            initMobileMenu();
+        });
+
+        function updateWishlistUI() {
+            document.getElementById('wishlistCount').textContent = wishlist.length;
+            document.getElementById('wishlistTotal').textContent = wishlist.length;
+            const container = document.getElementById('wishlistContent');
+            const clearBtn = document.getElementById('clearWishlistBtn');
+
+            if (wishlist.length === 0) {
+                container.innerHTML = `
+                    <div class="wishlist-empty">
+                        <i class="fas fa-heart"></i>
+                        <h3>Your wishlist is empty</h3>
+                        <p>Save items you love and want to purchase later. Click the heart icon on any product to add it here.</p>
+                        <a href="shop.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Browse Products</a>
+                    </div>`;
+                clearBtn.style.display = 'none';
+                return;
+            }
+
+            clearBtn.style.display = 'inline-flex';
+            const items = allProducts.filter(p => wishlist.includes(p.id));
+            container.innerHTML = `<div class="wishlist-grid">${items.map(p => {
+                const stars = [];
+                const full = Math.floor(p.rating);
+                for (let i = 0; i < full; i++) stars.push('<i class="fas fa-star"></i>');
+                if (p.rating % 1 >= 0.5) stars.push('<i class="fas fa-star-half-alt"></i>');
+                for (let i = stars.length; i < 5; i++) stars.push('<i class="far fa-star"></i>');
+                return `
+                <div class="wishlist-card">
+                    <button class="wishlist-remove" onclick="removeFromWishlist(${p.id})" title="Remove"><i class="fas fa-times"></i></button>
+                    ${p.badge ? `<span class="wishlist-badge">${p.badge}</span>` : ''}
+                    <div class="wishlist-img"><i class="fas ${p.icon}"></i></div>
+                    <div class="wishlist-info">
+                        <div class="wishlist-category">${p.category}</div>
+                        <h3>${p.name}</h3>
+                        <div class="wishlist-price">
+                            <span class="current">$${p.price.toFixed(2)}</span>
+                            <span class="old">$${p.oldPrice.toFixed(2)}</span>
+                        </div>
+                        <div class="wishlist-rating">${stars.join('')} <span>(${p.reviews})</span></div>
+                        <div class="wishlist-actions">
+                            <button class="btn btn-primary" onclick="moveToCart(${p.id})"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn btn-outline" onclick="openQuickView(${p.id})"><i class="fas fa-eye"></i> View</button>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('')}</div>`;
+        }
+
+        function removeFromWishlist(productId) {
+            wishlist = wishlist.filter(id => id !== productId);
+            saveWishlist();
+            updateWishlistUI();
+            showToast('Removed from wishlist');
+        }
+
+        function moveToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            const existing = cart.find(i => i.id === productId);
+            if (existing) existing.quantity++;
+            else cart.push({ ...product, quantity: 1 });
+            saveCart();
+            updateCartCount();
+            removeFromWishlist(productId);
+            showMovedToast(product.name + ' moved to cart');
+        }
+
+        function clearWishlist() {
+            if (!confirm('Clear your entire wishlist?')) return;
+            wishlist = [];
+            saveWishlist();
+            updateWishlistUI();
+            showToast('Wishlist cleared');
+        }
+
+        function saveWishlist() { localStorage.setItem('frontmax_wishlist', JSON.stringify(wishlist)); }
+        function saveCart() { localStorage.setItem('frontmax_cart', JSON.stringify(cart)); }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, i) => sum + i.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function showMovedToast(message) {
+            const toast = document.getElementById('movedToast');
+            document.getElementById('movedMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function openQuickView(productId) {
+            // Opens the shared quick view modal
+            if (window.parent && window.parent.openQuickView) {
+                window.parent.openQuickView(productId);
+            } else {
+                // Fallback: open in new tab or alert
+                const product = allProducts.find(p => p.id === productId);
+                showToast('Quick View: ' + product.name);
+            }
+        }
+
+        function initMobileMenu() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const menu = document.getElementById('mobileMenu');
+            const closeBtn = document.getElementById('closeMobileMenu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => { menu.classList.add('active'); document.body.style.overflow = 'hidden'; });
+            }
+            if (closeBtn && menu) {
+                closeBtn.addEventListener('click', () => { menu.classList.remove('active'); document.body.style.overflow = ''; });
+            }
+            document.querySelectorAll('.mobile-dropdown > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const submenu = link.nextElementSibling;
+                    if (submenu) {
+                        submenu.classList.toggle('active');
+                        const icon = link.querySelector('i');
+                        if (icon) icon.style.transform = submenu.classList.contains('active') ? 'rotate(180deg)' : '';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

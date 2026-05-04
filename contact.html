@@ -1,0 +1,817 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Frontmax - Premium Safety Tools & Equipment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1b4332; --primary-light: #2d6a4f; --primary-dark: #081c15;
+            --accent: #74c69d; --accent-light: #95d5b2; --accent-dark: #52b788; --accent-pale: #d8f3dc;
+            --text: #1b4332; --text-light: #52796f; --text-muted: #84a98c;
+            --bg: #ffffff; --bg-cream: #f8f9f8; --bg-pale: #eaf4ea;
+            --border: #d8f3dc; --border-light: #e8f5e9;
+            --shadow-sm: 0 1px 3px rgba(27,67,50,0.08);
+            --shadow-md: 0 4px 12px rgba(27,67,50,0.1);
+            --shadow-lg: 0 10px 40px rgba(27,67,50,0.12);
+            --radius-sm: 6px; --radius-md: 12px; --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; background: var(--bg); overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-md); font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-decoration: none; font-family: inherit; }
+        .btn-primary { background: var(--accent-dark); color: white; border-color: var(--accent-dark); }
+        .btn-primary:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+        .btn-white { background: white; color: var(--primary); border-color: white; }
+        .btn-white:hover { background: var(--bg-cream); }
+        .btn-outline-white { background: transparent; color: white; border-color: rgba(255,255,255,0.5); }
+        .btn-outline-white:hover { background: white; color: var(--primary); }
+        .top-bar { background: var(--primary-dark); color: rgba(255,255,255,0.8); padding: 10px 0; font-size: 0.85rem; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .top-left { display: flex; gap: 24px; }
+        .top-left span { display: flex; align-items: center; gap: 8px; }
+        .top-left i { color: var(--accent-light); font-size: 0.85rem; }
+        .top-right { display: flex; gap: 14px; }
+        .top-right a { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.85rem; }
+        .top-right a:hover { background: var(--accent); transform: translateY(-2px); }
+        .main-nav { background: white; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 46px; height: 46px; background: linear-gradient(135deg, var(--accent-dark), var(--primary-light)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; }
+        .logo-main { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .logo-tag { font-size: 0.7rem; color: var(--accent-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
+        .nav-links > li { position: relative; }
+        .nav-links > li > a { display: flex; align-items: center; gap: 6px; padding: 10px 16px; color: var(--text); font-weight: 600; font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--accent-dark); background: var(--accent-pale); }
+        .nav-links > li > a i { font-size: 0.7rem; transition: var(--transition); }
+        .dropdown:hover > a i { transform: rotate(180deg); }
+        .dropdown-menu { position: absolute; top: calc(100% + 8px); left: 0; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); min-width: 240px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: var(--transition); list-style: none; border: 1px solid var(--border-light); }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li a { display: block; padding: 10px 16px; color: var(--text); font-size: 0.9rem; border-radius: var(--radius-sm); transition: var(--transition); text-decoration: none; }
+        .dropdown-menu li a:hover { background: var(--accent-pale); color: var(--primary); }
+        .nav-actions { display: flex; align-items: center; gap: 12px; }
+        .search-box { position: relative; display: flex; align-items: center; }
+        .search-box input { width: 200px; padding: 10px 40px 10px 16px; border: 2px solid var(--border); border-radius: 30px; font-family: inherit; font-size: 0.9rem; transition: var(--transition); background: var(--bg-cream); }
+        .search-box input:focus { outline: none; border-color: var(--accent); width: 260px; background: white; }
+        .search-btn { position: absolute; right: 6px; background: var(--accent-dark); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.2rem; color: var(--primary); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .cart-icon:hover { background: var(--accent-pale); color: var(--primary); }
+        .cart-count { position: absolute; top: 2px; right: 2px; background: #e63946; color: white; font-size: 0.65rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .user-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--primary); cursor: pointer; transition: var(--transition); }
+        .user-icon:hover { background: var(--accent-pale); }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 5px; }
+        .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--primary); border-radius: 2px; }
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; background: white; z-index: 2000; transition: var(--transition); overflow-y: auto; box-shadow: var(--shadow-lg); }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-header { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .close-mobile-menu { background: none; border: none; font-size: 1.5rem; color: var(--text); cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .mobile-nav-links { list-style: none; padding: 20px 0; }
+        .mobile-nav-links > li > a { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; color: var(--text); font-weight: 600; font-size: 1.1rem; border-bottom: 1px solid var(--border-light); text-decoration: none; }
+        .mobile-submenu { list-style: none; background: var(--bg-cream); display: none; }
+        .mobile-submenu.active { display: block; }
+        .mobile-submenu li a { display: block; padding: 12px 24px 12px 48px; color: var(--text-light); font-size: 0.95rem; text-decoration: none; border-bottom: 1px solid var(--border-light); }
+        .mobile-contact { padding: 24px; background: var(--bg-cream); margin-top: 20px; }
+        .mobile-contact p { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text); font-weight: 500; }
+        .mobile-contact i { color: var(--accent-dark); width: 20px; }
+        
+        /* ===== PAGE HEADER - REDUCED HEIGHT, FOCUS ON HEAD ===== */
+        .page-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); padding: 0; position: relative; overflow: hidden; min-height: 380px; display: flex; align-items: stretch; }
+        .page-header-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .page-header .container { position: relative; z-index: 2; width: 100%; height: 100%; }
+        .page-header-content { display: grid; grid-template-columns: 1fr 0.85fr; gap: 0; align-items: stretch; height: 100%; min-height: 380px; }
+        .page-header-text { display: flex; flex-direction: column; justify-content: center; padding: 50px 40px 50px 0; }
+        .page-header-image { position: relative; height: 100%; min-height: 380px; display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden; }
+        .page-header-image img { height: 100%; width: 100%; max-width: none; object-fit: cover; object-position: top center; }
+        .page-header-image::after { content: ''; position: absolute; top: 0; left: 0; width: 120px; height: 100%; background: linear-gradient(to right, var(--primary), transparent); z-index: 2; pointer-events: none; }
+        .breadcrumb { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 20px; }
+        .breadcrumb a { color: rgba(255,255,255,0.9); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { color: var(--accent-light); }
+        .breadcrumb i { font-size: 0.7rem; }
+        .page-header h1 { font-size: 3rem; color: white; font-weight: 800; margin-bottom: 16px; }
+        .page-header p { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 600px; line-height: 1.7; }
+        .section-header { text-align: center; margin-bottom: 16px; }
+        .section-tag { display: inline-block; color: var(--accent-dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 16px; color: var(--primary); }
+        .section-header p { color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+        
+        /* Contact Specific Styles */
+        .contact-info-section { padding: 60px 0 40px; background: white; }
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .contact-card { background: white; border-radius: var(--radius-lg); padding: 36px 28px; text-align: center; border: 1px solid var(--border); transition: var(--transition); position: relative; overflow: hidden; }
+        .contact-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-8px); border-color: var(--accent-light); }
+        .contact-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent-dark), var(--primary-light)); }
+        .contact-icon { width: 80px; height: 80px; background: var(--accent-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; color: var(--accent-dark); font-size: 1.8rem; transition: var(--transition); }
+        .contact-card:hover .contact-icon { background: var(--accent-dark); color: white; }
+        .contact-card h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 12px; }
+        .contact-card p { color: var(--text-light); line-height: 1.8; font-size: 1rem; margin-bottom: 8px; }
+        .contact-card a { color: var(--accent-dark); text-decoration: none; font-weight: 600; transition: var(--transition); }
+        .contact-card a:hover { color: var(--primary); }
+        
+        .form-section { padding: 50px 0 60px; background: var(--bg-cream); }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .form-container { background: white; border-radius: var(--radius-lg); padding: 36px; border: 1px solid var(--border); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
+        .form-group label span { color: #e63946; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 18px; border: 2px solid var(--border); border-radius: var(--radius-md); font-family: inherit; font-size: 1rem; color: var(--text); background: var(--bg-cream); transition: var(--transition); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); background: white; }
+        .form-group textarea { min-height: 150px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-container .btn { width: 100%; padding: 16px; font-size: 1rem; }
+        
+        .contact-details-side { padding-top: 20px; }
+        .details-block { margin-bottom: 28px; }
+        .details-block h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .details-block h3 i { color: var(--accent-dark); }
+        .details-list { list-style: none; }
+        .details-list li { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+        .details-list li i { color: var(--accent-dark); font-size: 1.2rem; margin-top: 4px; width: 24px; flex-shrink: 0; }
+        .details-list li div strong { color: var(--primary); display: block; margin-bottom: 4px; font-size: 1rem; }
+        .details-list li div p, .details-list li div a { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; text-decoration: none; transition: var(--transition); }
+        .details-list li div a:hover { color: var(--accent-dark); }
+        .hours-list { list-style: none; }
+        .hours-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--text-light); font-size: 0.95rem; }
+        .hours-list li strong { color: var(--primary); }
+        
+        .map-section { padding: 0 0 60px; background: var(--bg-cream); }
+        .map-container { border-radius: var(--radius-lg); overflow: hidden; height: 380px; background: linear-gradient(135deg, var(--accent-pale), var(--bg-pale)); display: flex; align-items: center; justify-content: center; position: relative; border: 1px solid var(--border); }
+        .map-container i { font-size: 6rem; color: var(--accent-dark); opacity: 0.3; }
+        .map-overlay { position: absolute; bottom: 30px; left: 30px; background: white; padding: 24px 32px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-width: 320px; }
+        .map-overlay h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 8px; }
+        .map-overlay p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+        
+        .departments-section { padding: 60px 0; background: white; }
+        .dept-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .dept-card { background: var(--bg-cream); border-radius: var(--radius-lg); padding: 28px 24px; border: 1px solid var(--border); transition: var(--transition); display: flex; gap: 20px; align-items: flex-start; }
+        .dept-card:hover { box-shadow: var(--shadow-md); border-color: var(--accent-light); transform: translateY(-4px); }
+        .dept-icon { width: 60px; height: 60px; background: white; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: var(--accent-dark); font-size: 1.4rem; flex-shrink: 0; box-shadow: var(--shadow-sm); }
+        .dept-info h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 8px; }
+        .dept-info p { color: var(--text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 12px; }
+        .dept-info a { color: var(--accent-dark); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: var(--transition); }
+        .dept-info a:hover { color: var(--primary); }
+        
+        /* ===== FOOTER - COMPACT BUT BIG LOGO ===== */
+        footer { background: var(--primary-dark); color: white; }
+        .footer-top { padding: 40px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; }
+        .footer-brand .logo { margin-bottom: 16px; }
+        .footer-brand > p { color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 20px; font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 10px; }
+        .footer-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: white; transition: var(--transition); font-size: 0.9rem; }
+        .footer-social a:hover { background: var(--accent); transform: translateY(-2px); }
+        .footer-column h4 { font-size: 1rem; margin-bottom: 18px; color: white; position: relative; padding-bottom: 10px; }
+        .footer-column h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 3px; background: var(--accent); border-radius: 2px; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column ul li a { color: rgba(255,255,255,0.7); transition: var(--transition); font-size: 0.9rem; display: inline-block; text-decoration: none; }
+        .footer-column ul li a:hover { color: var(--accent-light); transform: translateX(4px); }
+        .footer-contact li { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+        .footer-contact i { color: var(--accent); margin-top: 4px; font-size: 1rem; width: 18px; }
+        .footer-contact strong { color: white; display: block; margin-bottom: 2px; font-size: 0.9rem; }
+        .footer-contact p { color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.5; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 18px 0; }
+        .footer-bottom-content { display: flex; justify-content: space-between; align-items: center; }
+        .footer-bottom p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.85rem; transition: var(--transition); text-decoration: none; }
+        .footer-links a:hover { color: var(--accent-light); }
+        
+        .cart-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .cart-overlay.active { opacity: 1; visibility: visible; }
+        .cart-sidebar { position: fixed; top: 0; right: -450px; width: 450px; max-width: 100%; height: 100vh; background: white; z-index: 2000; transition: var(--transition); display: flex; flex-direction: column; box-shadow: var(--shadow-lg); }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .cart-header h3 { font-size: 1.2rem; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .close-cart { background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-light); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition); }
+        .close-cart:hover { background: var(--bg-cream); color: #e63946; }
+        .cart-items { flex: 1; overflow-y: auto; padding: 24px; }
+        .cart-empty { text-align: center; padding: 60px 20px; }
+        .cart-empty i { font-size: 4rem; color: var(--border); margin-bottom: 20px; display: block; }
+        .cart-empty p { color: var(--text-light); margin-bottom: 24px; font-size: 1.05rem; }
+        .cart-item { display: flex; gap: 16px; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border-light); }
+        .cart-item-img { width: 80px; height: 80px; background: var(--bg-cream); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border); }
+        .cart-item-img i { font-size: 1.8rem; color: var(--accent-dark); opacity: 0.5; }
+        .cart-item-details { flex: 1; }
+        .cart-item-details h4 { font-size: 0.95rem; color: var(--primary); margin-bottom: 6px; font-weight: 600; }
+        .item-price { color: var(--accent-dark); font-weight: 700; margin-bottom: 12px; display: block; }
+        .quantity-control { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { width: 32px; height: 32px; border: 1px solid var(--border); background: white; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: var(--text); font-weight: 600; }
+        .qty-btn:hover { background: var(--accent-pale); border-color: var(--accent); }
+        .remove-item { margin-left: auto; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 4px; transition: var(--transition); }
+        .remove-item:hover { color: #e63946; }
+        .cart-footer { padding: 24px; border-top: 1px solid var(--border); background: var(--bg-cream); }
+        .cart-subtotal, .cart-shipping { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-light); }
+        .cart-total { display: flex; justify-content: space-between; margin: 16px 0 24px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 1.2rem; font-weight: 700; color: var(--primary); }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; padding: 18px 28px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); z-index: 3000; transform: translateY(100px); opacity: 0; transition: var(--transition); display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast i { color: var(--accent-light); font-size: 1.3rem; }
+        .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; background: var(--accent-dark); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: var(--shadow-md); z-index: 999; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: whatsappPulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
+        }
+
+        @media (max-width: 1200px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } .dept-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 992px) { .form-grid { grid-template-columns: 1fr; gap: 50px; } .contact-grid { grid-template-columns: 1fr; } .search-box { display: none; } .nav-links { display: none; } .mobile-menu-btn { display: flex; } .page-header h1 { font-size: 2.4rem; } .page-header-content { grid-template-columns: 1fr; text-align: center; min-height: auto; } .page-header-text { padding: 50px 0; } .page-header-image { display: none; } .page-header { min-height: auto; } }
+        @media (max-width: 768px) { .top-bar .container { flex-direction: column; gap: 10px; text-align: center; } .form-row { grid-template-columns: 1fr; } .section-header h2 { font-size: 2rem; } .footer-bottom-content { flex-direction: column; gap: 16px; text-align: center; } .footer-grid { grid-template-columns: 1fr; gap: 40px; } .cart-sidebar { width: 100%; } .page-header { min-height: auto; } .map-container { height: 300px; } .page-header-text { padding: 40px 0; } }
+        @media (max-width: 480px) { .page-header h1 { font-size: 1.9rem; } .btn { width: 100%; } .form-container { padding: 28px 20px; } .contact-card { padding: 28px 20px; } .page-header-text { padding: 30px 0; } }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-phone-alt"></i> +254 706 303 581</span>
+                <span><i class="fas fa-envelope"></i> info@frontmax.com</span>
+                <span><i class="fas fa-clock"></i> Mon-Fri 8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="top-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo (1).png" alt="Frontmax" style="height: 200px; width: auto; object-fit: contain; position: relative; z-index: 1001;">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="shop.html">All Products</a></li>
+                        <li><a href="shop.html#head">Head Protection</a></li>
+                        <li><a href="shop.html#eye">Eye & Face</a></li>
+                        <li><a href="shop.html#hand">Hand Protection</a></li>
+                        <li><a href="shop.html#foot">Foot Protection</a></li>
+                        <li><a href="shop.html#body">Body Protection</a></li>
+                        <li><a href="shop.html#respiratory">Respiratory</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">Workshop</a></li>
+                <li><a href="about.html">Company</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." id="searchInput">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="user-icon"><i class="fas fa-user"></i></div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">
+                <img src="./images/logo (1).png" alt="Frontmax" style="height: 180px; width: auto; object-fit: contain;">
+            </a>
+            <button class="close-mobile-menu" id="closeMobileMenu"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-submenu">
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="shop.html#head">Head Protection</a></li>
+                    <li><a href="shop.html#eye">Eye & Face</a></li>
+                    <li><a href="shop.html#hand">Hand Protection</a></li>
+                    <li><a href="shop.html#foot">Foot Protection</a></li>
+                </ul>
+            </li>
+            <li><a href="services.html">Workshop</a></li>
+            <li><a href="about.html">Company</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="mobile-contact">
+            <p><i class="fas fa-phone-alt"></i> +254 706 303 581</p>
+            <p><i class="fas fa-envelope"></i> info@frontmax.com</p>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-bg"></div>
+        <div class="container">
+            <div class="page-header-content">
+                <div class="page-header-text">
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Contact Us</span>
+                    </div>
+                    <h1>Get In Touch</h1>
+                    <p>Have questions about products, services, or safety compliance? Our team is ready to help you protect your workforce.</p>
+                </div>
+                <div class="page-header-image">
+                    <img src="./images/ChatGPT Image May 2, 2026, 05_49_44 PM.png" alt="Customer Support">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with a safety specialist</p>
+                    <a href="tel:+254706303581">+254 706 303 581</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email Us</h3>
+                    <p>We'll respond within 24 hours</p>
+                    <a href="mailto:info@frontmax.com">info@frontmax.com</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Visit Us</h3>
+                    <p>Lunga Lunga Plaza</p>
+                    <p>Lunga Lunga Road, Industrial Area</p>
+                    <p>Nairobi, Kenya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Details -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-grid">
+                <div class="form-container">
+                    <span class="section-tag">Send a Message</span>
+                    <h2 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 8px;">How Can We Help?</h2>
+                    <p style="color: var(--text-light); margin-bottom: 32px;">Fill out the form below and we'll receive your message on WhatsApp instantly.</p>
+                    
+                    <form id="contactForm" onsubmit="event.preventDefault(); sendToWhatsApp();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name <span>*</span></label>
+                                <input type="text" id="firstName" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name <span>*</span></label>
+                                <input type="text" id="lastName" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email <span>*</span></label>
+                                <input type="email" id="email" placeholder="john@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="phone" placeholder="+254 700 000 000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" id="company" placeholder="Your Company">
+                        </div>
+                        <div class="form-group">
+                            <label>Inquiry Type <span>*</span></label>
+                            <select id="inquiryType" required>
+                                <option value="">Select a topic...</option>
+                                <option value="Product Inquiry">Product Inquiry</option>
+                                <option value="Safety Services">Safety Services</option>
+                                <option value="Request a Quote">Request a Quote</option>
+                                <option value="Compliance Question">Compliance Question</option>
+                                <option value="Order Status">Order Status</option>
+                                <option value="Something Else">Something Else</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message <span>*</span></label>
+                            <textarea id="message" placeholder="Tell us about your safety needs, questions, or requirements..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-details-side">
+                    <div class="details-block">
+                        <h3><i class="fas fa-building"></i> Headquarters</h3>
+                        <ul class="details-list">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address</strong>
+                                    <p>Lunga Lunga Plaza<br>Lunga Lunga Road, Industrial Area<br>Nairobi, Kenya</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <p><a href="tel:+254706303581">+254 706 303 581</a></p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p><a href="mailto:info@frontmax.com">info@frontmax.com</a></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="details-block">
+                        <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                        <ul class="hours-list">
+                            <li><strong>Monday - Friday</strong> <span>8:00 AM - 6:00 PM</span></li>
+                            <li><strong>Saturday</strong> <span>9:00 AM - 2:00 PM</span></li>
+                            <li><strong>Sunday</strong> <span>Closed</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container" style="padding: 0; height: 450px;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8223!2d36.8608!3d-1.3036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11e1c2c0c0c1%3A0x0!2sLunga%20Lunga%20Plaza%2C%20Lunga%20Lunga%20Rd%2C%20Industrial%20Area%2C%20Nairobi%2C%20Kenya!5e0!3m2!1sen!2s!4v1699999999999!5m2!1sen!2s" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; border-radius: var(--radius-lg);" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="map-overlay">
+                    <h3>Frontmax Headquarters</h3>
+                    <p>Lunga Lunga Plaza<br>Lunga Lunga Road, Industrial Area<br>Nairobi, Kenya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments -->
+    <section class="departments-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Direct Lines</span>
+                <h2>Contact a Department</h2>
+                <p>Reach the right team for faster assistance</p>
+            </div>
+            <div class="dept-grid">
+                <div class="dept-card">
+                    <div class="dept-icon"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="dept-info">
+                        <h3>Sales & Product Inquiries</h3>
+                        <p>Questions about products, pricing, bulk orders, or custom PPE programs. Our team can provide quotes and recommendations.</p>
+                        <a href="mailto:sales@frontmax.com">sales@frontmax.com</a>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <div class="dept-info">
+                        <h3>Safety Consulting</h3>
+                        <p>Schedule audits, training sessions, compliance reviews, or speak with a certified safety specialist about your program.</p>
+                        <a href="mailto:consulting@frontmax.com">consulting@frontmax.com</a>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-icon"><i class="fas fa-truck"></i></div>
+                    <div class="dept-info">
+                        <h3>Orders & Shipping</h3>
+                        <p>Track shipments, modify orders, request expedited delivery, or resolve delivery issues with our logistics team.</p>
+                        <a href="mailto:orders@frontmax.com">orders@frontmax.com</a>
+                    </div>
+                </div>
+                <div class="dept-card">
+                    <div class="dept-icon"><i class="fas fa-tools"></i></div>
+                    <div class="dept-info">
+                        <h3>Equipment Inspections</h3>
+                        <p>Book fall protection inspections, respiratory fit testing, or schedule maintenance for your safety equipment fleet.</p>
+                        <a href="mailto:inspections@frontmax.com">inspections@frontmax.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo">
+                            <img src="./images/logo (1).png" alt="Frontmax" style="height: 180px; width: auto; object-fit: contain; margin-bottom: 16px;">
+                        </a>
+                        <p>Your trusted partner for premium safety tools and equipment. Protecting workers with certified, high-quality solutions since 2010.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="shop.html">Shop All</a></li>
+                            <li><a href="about.html">Company</a></li>
+                            <li><a href="services.html">Workshop</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="shop.html#head">Head Protection</a></li>
+                            <li><a href="shop.html#eye">Eye & Face</a></li>
+                            <li><a href="shop.html#hand">Hand Protection</a></li>
+                            <li><a href="shop.html#foot">Foot Protection</a></li>
+                            <li><a href="shop.html#body">Body Protection</a></li>
+                            <li><a href="shop.html#respiratory">Respiratory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Info</h4>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div><strong>Headquarters</strong><p>Lunga Lunga Plaza<br>Lunga Lunga Road, Industrial Area<br>Nairobi, Kenya</p></div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <div><strong>Phone</strong><p>+254 706 303 581<br>+254 717 111 114</p></div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div><strong>Email</strong><p>info@frontmax.com<br>sales@frontmax.com</p></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2026 Frontmax Safety Equipment. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Shipping Policy</a>
+                        <a href="#">Return Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="btn btn-primary" onclick="toggleCart()">Start Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-subtotal"><span>Subtotal:</span><span id="cartSubtotal">KES 0.00</span></div>
+            <div class="cart-shipping"><span>Shipping:</span><span id="cartShipping">Calculated at checkout</span></div>
+            <div class="cart-total"><span>Total:</span><span id="cartTotal">KES 0.00</span></div>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 10px;" onclick="checkoutWhatsApp()"><i class="fab fa-whatsapp"></i> Checkout via WhatsApp</button>
+            <button class="btn btn-outline" style="width: 100%;" onclick="toggleCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/254706303581" class="whatsapp-float" id="whatsappFloat">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('frontmax_cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartUI();
+            initMobileMenu();
+            initBackToTop();
+        });
+
+        function sendToWhatsApp() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const company = document.getElementById('company').value.trim();
+            const inquiryType = document.getElementById('inquiryType').value;
+            const message = document.getElementById('message').value.trim();
+
+            let text = `*New Contact Form Submission - Frontmax*\n\n`;
+            text += `*Name:* ${firstName} ${lastName}\n`;
+            text += `*Email:* ${email}\n`;
+            if (phone) text += `*Phone:* ${phone}\n`;
+            if (company) text += `*Company:* ${company}\n`;
+            text += `*Inquiry Type:* ${inquiryType}\n`;
+            text += `\n*Message:*\n${message}\n`;
+            text += `\n_Sent from frontmax.com/contact.html_`;
+
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/254706303581?text=${encodedText}`;
+            window.open(whatsappUrl, '_blank');
+            showToast('Opening WhatsApp with your message...');
+            document.getElementById('contactForm').reset();
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!');
+                return;
+            }
+            let text = `*New Order - Frontmax Safety Equipment*\n\n`;
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                text += `${index + 1}. ${item.name} x${item.quantity} - KES ${itemTotal.toFixed(2)}\n`;
+            });
+            text += `\n*Total: KES ${total.toFixed(2)}*\n`;
+            text += `\nPlease confirm my order.`;
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/254706303581?text=${encodedText}`, '_blank');
+            showToast('Opening WhatsApp to complete your order...');
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            const container = document.getElementById('cartItems');
+            const footer = document.getElementById('cartFooter');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartSubtotal').textContent = 'KES ' + subtotal.toFixed(2);
+            document.getElementById('cartTotal').textContent = 'KES ' + subtotal.toFixed(2);
+
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-basket"></i><p>Your cart is empty</p><a href="shop.html" class="btn btn-primary" onclick="toggleCart()">Start Shopping</a></div>';
+                if (footer) footer.style.display = 'none';
+                return;
+            }
+            if (footer) footer.style.display = 'block';
+            let html = '';
+            for (let item of cart) {
+                html += '<div class="cart-item"><div class="cart-item-img"><i class="fas ' + item.icon + '"></i></div><div class="cart-item-details"><h4>' + item.name + '</h4><span class="item-price">KES ' + item.price.toFixed(2) + '</span><div class="quantity-control"><button class="qty-btn" onclick="updateQuantity(' + item.id + ', -1)">-</button><span>' + item.quantity + '</span><button class="qty-btn" onclick="updateQuantity(' + item.id + ', 1)">+</button><button class="remove-item" onclick="removeFromCart(' + item.id + ')"><i class="fas fa-trash-alt"></i></button></div></div></div>';
+            }
+            container.innerHTML = html;
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart(); updateCartUI();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) { removeFromCart(productId); }
+                else { saveCart(); updateCartUI(); }
+            }
+        }
+
+        function saveCart() { localStorage.setItem('frontmax_cart', JSON.stringify(cart)); }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+            document.getElementById('cartOverlay').classList.toggle('active');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function initMobileMenu() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const menu = document.getElementById('mobileMenu');
+            const closeBtn = document.getElementById('closeMobileMenu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => {
+                    menu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            if (closeBtn && menu) {
+                closeBtn.addEventListener('click', () => {
+                    menu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            document.querySelectorAll('.mobile-dropdown > a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const submenu = link.nextElementSibling;
+                    if (submenu) {
+                        submenu.classList.toggle('active');
+                        const icon = link.querySelector('i');
+                        if (icon) icon.style.transform = submenu.classList.contains('active') ? 'rotate(180deg)' : '';
+                    }
+                });
+            });
+        }
+
+        function initBackToTop() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            window.addEventListener('scroll', () => {
+                btn.classList.toggle('visible', window.pageYOffset > 500);
+            });
+        }
+
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    </script>
+</body>
+</html>
